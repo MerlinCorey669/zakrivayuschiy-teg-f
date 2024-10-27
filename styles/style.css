@@ -19,9 +19,9 @@
   justify-content: center;
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--font-family-content, 'Oswald', 'Arial'), sans-serif;
+  font-family: var(--font-family-content, "Oswald", "Arial"), sans-serif;
   font-size: 18px;
-  font-variation-settings: 'wght' var(--font-normal);
+  font-variation-settings: "wght" var(--font-normal);
   color: var(--text-color);
   background-image: var(--background-image);
   background-position: center;
@@ -45,6 +45,7 @@
   width: 100%;
   border: 2px var(--text-color) solid;
 }
+
 .header__title {
   font-family: var(--font-family-title);
   font-size: 23px;
@@ -87,6 +88,7 @@
   transition: transform var(--animation-time, 0.3s) ease;
   transform: scaleX(0);
   width: 100%;
+  transform-origin: left;
 }
 
 .theme-menu__button:hover {
@@ -100,7 +102,6 @@
 
 .theme-menu__button:focus-visible {
   opacity: 0.6;
-
 }
 
 .theme-menu__button:focus-visible::after {
@@ -140,7 +141,7 @@
 }
 
 .card__title {
-  font-variation-settings: 'wght' var(--font-bold);
+  font-variation-settings: "wght" var(--font-bold);
   padding: 4.5px 10px;
   font-size: var(--font-size);
 }
@@ -157,53 +158,56 @@
   object-position: center;
   border-top: 2px var(--text-color) solid;
   border-bottom: 2px var(--text-color) solid;
+  aspect-ratio: 1;
 }
 
 .image-brightness {
   filter: brightness(50%);
-} 
+}
 
 .image-contrast {
   filter: contrast(200%);
-} 
+}
 
 .image-blur {
   filter: blur(3px);
-} 
+}
 
 .image-mix {
   filter: invert(1) blur(1px);
-} 
+}
 
 .image-grayscale {
   filter: grayscale(0.8);
-} 
+}
 
 .image-saturate {
   filter: saturate(500%);
-} 
+}
 
 .image-huerotate {
   filter: hue-rotate(130deg);
-} 
+}
 
 .image-mix-hard {
-  filter:invert(1) brightness(200%) saturate(60%) hue-rotate(90deg) blur(2px);
-} 
+  filter: invert(1) brightness(200%) saturate(60%) hue-rotate(90deg) blur(2px);
+}
 
 .card__image-text {
   position: absolute;
   top: 25px;
-  right: 25px;
+  right: clamp(0.688rem, 0.107rem + 1.548vw, 1.5rem) 1;
   font-family: var(--font-family-title);
   color: var(--text-color);
-  text-shadow: -1px 0 var(--background-color), 1px 0 var(--background-color), 0 1px var(--background-color), 0 -1px var(--background-color);
+  text-shadow: -1px 0 var(--background-color), 1px 0 var(--background-color),
+    0 1px var(--background-color), 0 -1px var(--background-color);
   font-size: 14px;
   mix-blend-mode: hard-light;
   opacity: 0.6;
 }
 
-@supports (text-stroke: 1px var(--background-color)) or (-webkit-text-stroke: 1px var(--background-color)) {
+@supports (text-stroke: 1px var(--background-color)) or
+  (-webkit-text-stroke: 1px var(--background-color)) {
   .card__image-text {
     text-shadow: none;
     -webkit-text-stroke: 1px var(--background-color);
@@ -227,19 +231,30 @@
 
 .button-section {
   margin-block-start: 26px;
-  padding: 0px 27px 24px;
+  padding: 0px 27px 27px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 4px;
+  gap: 10px;
 }
 
 .card__icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   border: none;
   color: var(--text-color);
-  padding: 2px 5px;
+  padding: 0px;
   cursor: pointer;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: 2px solid var(--text-color);
 }
 
 .like-icon {
@@ -301,14 +316,6 @@
   opacity: 0;
 }
 
-.card__icon-button:focus {
-  outline: none;
-}
-
-.card__icon-button:focus-visible {
-  border: 2px solid var(--text-color);
-}
-
 .button {
   position: relative;
   background-color: var(--background-color);
@@ -342,9 +349,9 @@
   box-shadow: 2px 2px 0 var(--text-color, #000000);
 }
 
-.card__like-button {  
+.card__like-button {
   width: 130px;
-  height: 38px;
+  height: 39px;
 }
 
 .button__text {
@@ -411,14 +418,14 @@
 
 @media (width <= 375px) {
   .dialog[open] {
-    padding-inline-start: 42px;
-    padding-inline-end: 42px;
+    padding-inline-start: 41px;
+    padding-inline-end: 41px;
     max-width: 341px;
   }
 }
 
 .dialog::backdrop {
-  opacity: 80%;
+  opacity: 75%;
   background-color: #000;
 }
 
@@ -435,7 +442,6 @@
   font-size: 14px;
   line-height: 150%;
   text-transform: uppercase;
-  
 }
 
 .dialog__button {
