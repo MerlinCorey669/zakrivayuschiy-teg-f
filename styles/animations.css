@@ -12,3 +12,46 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
+
+.theme-menu__button:disabled::before {
+    animation: pointer var(--animation-duration) ease-in-out infinite alternate;
+}
+
+@keyframes pointer {
+    from {
+        left: -20px;
+    }
+    to {
+        left: -16px;
+    }
+}
+
+.like-icon.is-liked .heart {
+    animation: heart var(--animation-time) ease-in 0.1s 1 alternate;
+}
+
+@keyframes heart {
+    from {
+        transform-origin: center;
+        scale: 1;
+    }
+
+    to {
+        transform-origin: center;
+        scale: 1.5;
+    }
+}
+
+.like-icon.is-liked .sparks {
+    animation: sparks var(--animation-time) ease-in var(--animation-time) 1 alternate;
+}
+
+@keyframes sparks {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
